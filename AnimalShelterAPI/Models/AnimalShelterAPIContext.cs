@@ -56,7 +56,7 @@ namespace AnimalShelterAPI.Models
             Personality = Personality.Shy,
             About = "Anxious around new animals and people, but very sweet!",
             Adopted = false,
-            }
+            },
 
             new Animal {
             AnimalId = 248680, 
