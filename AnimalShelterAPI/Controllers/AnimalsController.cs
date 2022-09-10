@@ -37,7 +37,7 @@ namespace AnimalShelterAPI.Controllers
       return animal;
     }
 
-    [HttpGet("Search/searchString")]
+    [HttpGet("Search")]
     public async Task<ActionResult<IEnumerable<Animal>>> GetSearch([FromQuery] string searchString, [FromQuery] PaginationFilter pagination)
     {
       var animals = await _db.Animals
