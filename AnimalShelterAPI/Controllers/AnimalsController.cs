@@ -33,7 +33,11 @@ namespace AnimalShelterAPI.Controllers
     [HttpGet("{AnimalId}")]
     public async Task<ActionResult<Animal>> GetAction(int AnimalId)
     {
-      Animal animal = await _db.Animals.FirstOrDefaultAsync(d => d.AnimalId == AnimalId);
+      var animal = await _db.Animals.FindAsync(AnimalId);
+      if (animal == null)
+      {
+        return NotFound();
+      }
       return animal;
     }
 
@@ -41,7 +45,7 @@ namespace AnimalShelterAPI.Controllers
     public async Task<ActionResult<IEnumerable<Animal>>> GetSearch([FromQuery] string searchString, [FromQuery] PaginationFilter pagination)
     {
       var animals = await _db.Animals
-      .Where(c => c.Name.Contains(searchString))
+      .Where(c => c.Breed.Contains(searchString))
       .Skip((pagination.PageNumber -1) * pagination.PageSize)
       .Take(pagination.PageSize)
       .ToListAsync();
