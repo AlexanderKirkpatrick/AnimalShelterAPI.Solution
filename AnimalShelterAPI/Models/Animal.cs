@@ -2,7 +2,7 @@ using System;
 
 namespace AnimalShelterAPI.Models
 {
-  public abstract class Animal
+  public class Animal
   {
     public int AnimalId { get; set; }
     [Required]
