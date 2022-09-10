@@ -19,9 +19,6 @@ namespace AnimalShelterAPI.Controllers
       _db = db;
     }
 
-    //GET api/Animals
-    //http://localhost:5000/api/Animals?PageNumber=2
-    //http://localhost:5000/api/Animals?PageNumber=2&PageSize=1
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Animal>>> Get ([FromQuery] PaginationFilter pagination)
     {
@@ -33,7 +30,6 @@ namespace AnimalShelterAPI.Controllers
       return animals;
     }
 
-    //GET api/Animals/3 - Get for specific Animal
     [HttpGet("{AnimalId}")]
     public async Task<ActionResult<Animal>> GetAction(int AnimalId)
     {
@@ -41,8 +37,6 @@ namespace AnimalShelterAPI.Controllers
       return animal;
     }
 
-    // http://localhost:5000/api/Animals/Search/searchString?searchString=Z
-    //GET api/Cats/Search
     [HttpGet("Search/searchString")]
     public async Task<ActionResult<IEnumerable<Animal>>> GetSearch([FromQuery] string searchString, [FromQuery] PaginationFilter pagination)
     {
@@ -55,7 +49,6 @@ namespace AnimalShelterAPI.Controllers
       return animals;
     }
 
-    //Get api/Animals/random
     [HttpGet("Random")]
     public async Task<ActionResult<Animal>> GetRandom ()
     {
@@ -65,7 +58,6 @@ namespace AnimalShelterAPI.Controllers
       return animal;
     }
 
-    // POST api/Animals
     [HttpPost]
     public void Post([FromBody] Animal animal)
     {
@@ -73,7 +65,6 @@ namespace AnimalShelterAPI.Controllers
       _db.SaveChanges();
     }
 
-    //PUT api/Animals/5
     [HttpPut("{id}")]
     public void Put(int id, [FromBody] Animal animal)
     {
@@ -82,7 +73,6 @@ namespace AnimalShelterAPI.Controllers
       _db.SaveChanges();
     }
 
-    //DELETE api/Animals/5
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
